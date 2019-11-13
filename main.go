@@ -6,11 +6,13 @@ import (
 )
 
 func main() {
-	logrus.Debugf("Sending request without logrus")
+	logrus.Info("Initializing")
+	logrus.SetLevel(logrus.DebugLevel)
+	logrus.Debug("Sending request without logrus")
 	resty.New().SetDebug(true).R().Get("www.google.com")
-	logrus.Debugf("Request sent")
+	logrus.Debug("Request sent")
 
-	logrus.Debugf("Sending request with logrus")
+	logrus.Debug("Sending request with logrus")
 	resty.New().SetLogger(logrus.New()).SetDebug(true).R().Get("www.google.com")
-	logrus.Debugf("Request sent")
+	logrus.Debug("Request sent")
 }
